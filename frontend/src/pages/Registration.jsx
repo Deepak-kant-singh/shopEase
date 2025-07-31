@@ -9,7 +9,7 @@ import Logo from "../assets/logo.png";
 import google from '../assets/google.png';
 import Loading from '../component/Loading';
 
-import { authDataContext } from '../context/authContext'; // Server URL
+import { authDataContext } from '../context/AuthContext'; // Server URL
 import { userDataContext } from '../context/UserContext'; // User state context
 import { auth, provider } from '../utils/Firebase'; // Firebase auth
 
