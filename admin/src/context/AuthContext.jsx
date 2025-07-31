@@ -6,7 +6,7 @@ export const authDataContext = createContext()
 // AuthContext component acts as a context provider
 function AuthContext({children}) {
     // Define the backend server URL to be shared across the app
-    let serverUrl = "http://localhost:8000"  // This is your Express server address
+    let serverUrl = "https://shopease-backend-ao4p.onrender.com"  // This is your Express server address
 
     // This value object holds all the data that will be made accessible through the context
     let value = {
