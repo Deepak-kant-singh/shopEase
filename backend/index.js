@@ -40,7 +40,7 @@ app.use(cookieParser())
 // Enable CORS for frontend origin (React app running on Vite dev server ports 5173/5174)
 // `credentials:true` allows cookies to be sent with requests
 app.use(cors({
- origin: ["https://shopease-frontend2.onrender.com", "hhttps://shopease-admin-7h0s.onrender.com"],
+ origin: ["https://shopease-frontend2.onrender.com", "https://shopease-admin-7h0s.onrender.com"],
  credentials: true
 }))
 
