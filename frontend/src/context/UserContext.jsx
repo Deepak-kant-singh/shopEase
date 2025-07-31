@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 // Importing context to access the backend server URL
-import { authDataContext } from './authContext'
+import { authDataContext } from './AuthContext'
 
 // Importing Axios for making HTTP requests
 import axios from 'axios'
