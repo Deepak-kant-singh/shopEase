@@ -10,24 +10,26 @@ import connectDb from './config/db.js'
 // Import middleware to parse cookies from incoming requests
 import cookieParser from 'cookie-parser'
 
+// Import authentication-related routes
+import authRoutes from './routes/authRoutes.js'
+
+// Load environment variables
+dotenv.config()
+
 // Import CORS to handle Cross-Origin Resource Sharing
 import cors from "cors"
 
-// Import route modules
-import authRoutes from './routes/authRoutes.js'
+// Import all route modules for user, product, cart, and order management
 import userRoutes from './routes/userRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import cartRoutes from './routes/cartRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 
-// Load environment variables
-dotenv.config()
-
 // Set the port on which server will run. Use .env value if available; otherwise default to 6000
-const port = process.env.PORT || 6000
+let port = process.env.PORT || 6000
 
 // Initialize the Express application
-const app = express()
+let app = express()
 
 // Middleware to parse JSON payloads from incoming requests
 app.use(express.json())
@@ -35,44 +37,22 @@ app.use(express.json())
 // Middleware to parse cookies from incoming HTTP headers
 app.use(cookieParser())
 
-// ✅ CORS Configuration
-const allowedOrigins = [
-    "https://shopease-frontend2.onrender.com",  // Customer frontend
-    "https://shopease-admin-7h0s.onrender.com", // Admin dashboard
-    "http://localhost:5173"                     // Local development
-]
-
+// Enable CORS for frontend origin (React app running on Vite dev server ports 5173/5174)
+// `credentials:true` allows cookies to be sent with requests
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true)
-        } else {
-            callback(new Error("Not allowed by CORS"))
-        }
-    },
-    credentials: true, // Allow cookies and authentication headers
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+ origin: ["https://shopease-frontend2.onrender.com", "https://shopease-admin-7h0s.onrender.com"],
+ credentials: true
 }))
 
-// ✅ Handle Preflight OPTIONS requests globally
-app.options("*", cors())
-
-// ✅ Debug route to test CORS (Optional)
-app.get("/test-cors", (req, res) => {
-    res.set("Access-Control-Allow-Origin", "https://shopease-admin-7h0s.onrender.com");
-    res.json({ message: "CORS is working correctly!" });
-});
-
-// Mount route modules
+// Mount route modules to handle specific functionalities under specific base paths
 app.use("/api/auth", authRoutes)        // Routes for registration, login, logout, etc.
 app.use("/api/user", userRoutes)        // Routes for user-related data like profile
 app.use("/api/product", productRoutes)  // Routes for adding, listing, and removing products
 app.use("/api/cart", cartRoutes)        // Routes for cart actions like add/update/view
 app.use("/api/order", orderRoutes)      // Routes for placing and managing orders
 
-// Start the server and connect to MongoDB
+// Start the server on the specified port and connect to MongoDB after server is live
 app.listen(port, () => {
-    console.log(`✅ Server running on port ${port}`)
-    connectDb()
+    console.log("Hello From Server")   // Log message when server starts
+    connectDb()                        // Connect to MongoDB database
 })
