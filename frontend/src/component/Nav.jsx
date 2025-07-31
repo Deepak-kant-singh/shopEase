@@ -12,7 +12,7 @@ import { IoMdHome } from "react-icons/io";
 
 // Contexts for user, authentication and shop data
 import { userDataContext } from '../context/UserContext';
-import { authDataContext } from '../context/authContext';
+import { authDataContext } from '../context/AuthContext';
 import { shopDataContext } from '../context/ShopContext';
 
 import { useNavigate } from 'react-router-dom';
