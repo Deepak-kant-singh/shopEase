@@ -9,7 +9,7 @@ import CartTotal from '../component/CartTotal'
 
 // Importing contexts
 import { shopDataContext } from '../context/ShopContext'
-import { authDataContext } from '../context/authContext'
+import { authDataContext } from '../context/AuthContext'
 
 // Axios for HTTP requests
 import axios from 'axios'
