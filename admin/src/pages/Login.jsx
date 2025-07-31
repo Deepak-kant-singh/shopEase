@@ -126,5 +126,3 @@ function Login() {
 }
 
 export default Login;
-
-add good css without changing any logic
