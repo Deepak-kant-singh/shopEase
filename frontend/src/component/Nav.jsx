@@ -34,24 +34,17 @@ function Nav() {
   const navigate = useNavigate();
 
   // Logout user and clear user data
-const handleLogout = async () => {
-  try {
-    const result = await axios.post(
-      serverUrl + "/api/auth/logout", 
-      {}, // Empty body
-      { withCredentials: true } // Config object
-    );
+  const handleLogout = async () => {
+    try {
+      const result = await axios.get(serverUrl + "/api/auth/logout", { withCredentials: true });
+      console.log("Logout successful:", result.data);
 
-    console.log("Logout successful:", result.data);
-
-    setUserData(null);      // Clear user data
-    localStorage.clear();   // Clear local storage (if any token is saved)
-    navigate("/login");     // Go to login page
-  } catch (error) {
-    console.log("Logout error:", error);
+      setUserData(null);      // Clear user data
+      navigate("/login");     // Go to login page
+    } catch (error) {
+      console.log("Logout error:", error);
+    }
   }
-};
-
 
   return (
     <div className='w-[100vw] h-[70px] bg-[#ecfafaec] z-10 fixed top-0 flex items-center justify-between px-[30px] shadow-md shadow-black'>
