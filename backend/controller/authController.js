@@ -45,8 +45,8 @@ export const registration = async (req, res) => {
     // Set token in cookie with 7-day expiry and HTTP-only flag
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // change to true in production with HTTPS
-      sameSite: "Strict",
+      secure: true, // change to true in production with HTTPS
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -84,8 +84,8 @@ export const login = async (req, res) => {
     // Set the token in HTTP-only cookie for 7 days
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "Strict",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -138,8 +138,8 @@ export const googleLogin = async (req, res) => {
     // Set the token in cookie for 7 days
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "Strict",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -168,8 +168,8 @@ export const adminLogin = async (req, res) => {
       // Set the token in cookie valid for 1 day
       res.cookie("token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: "Strict",
+        secure: true,
+        sameSite: "none",
         maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
       });
 
