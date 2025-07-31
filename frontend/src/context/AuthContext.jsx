@@ -7,7 +7,7 @@ export const authDataContext = createContext()
 function AuthContext({ children }) {
 
   // Defining a variable that stores the server API base URL
-  let serverUrl = "http://localhost:8000"
+  let serverUrl = "https://shopease-backend-ao4p.onrender.com"
 
   // This object can hold any global values you want to pass down
   let value = {
