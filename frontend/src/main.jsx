@@ -14,7 +14,7 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 
 // Import context providers for global state management
-import AuthContext from './context/authContext.jsx'     // Handles authentication state (e.g., serverUrl, login)
+import AuthContext from './context/AuthContext.jsx'     // Handles authentication state (e.g., serverUrl, login)
 import UserContext from './context/UserContext.jsx'     // Manages user data (e.g., profile, info)
 import ShopContext from './context/ShopContext.jsx'     // Manages cart, wishlist, or product-related global state
 
