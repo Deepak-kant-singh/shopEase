@@ -8,7 +8,7 @@ import Title from '../component/Title'
 import { shopDataContext } from '../context/ShopContext'
 
 // Importing context to get the backend server URL
-import { authDataContext } from '../context/authContext'
+import { authDataContext } from '../context/AuthContext'
 
 // Axios for making HTTP requests to backend
 import axios from 'axios'
