@@ -14,7 +14,7 @@ import google from '../assets/google.png'
 import { IoEyeOutline, IoEye } from "react-icons/io5";
 
 // Context to get backend server URL
-import { authDataContext } from '../context/authContext';
+import { authDataContext } from '../context/AuthContext';
 
 // Axios is used to make HTTP requests
 import axios from 'axios';
