@@ -65,7 +65,7 @@ function Login() {
             // Sending POST request to backend to login user
             const result = await axios.post(`${serverUrl}/api/auth/login`, { email, password }, { withCredentials: true });
             
-            console.log(result.data); // Log response for debugging
+            // console.log(result.data); // Log response for debugging
 
             setLoading(false); // Hide loading spinner
             getCurrentUser(); // Update context with logged-in user
@@ -99,7 +99,7 @@ function Login() {
             // Send user info to backend for Google login/register
             const result = await axios.post(`${serverUrl}/api/auth/googlelogin`, { name, email }, { withCredentials: true });
 
-            console.log(result.data); // Log backend response
+            // console.log(result.data); // Log backend response
 
             getCurrentUser(); // Update context
             navigate("/"); // Redirect to homepage
